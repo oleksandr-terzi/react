@@ -2,6 +2,7 @@
   "name": "hw2.0",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://oleksandr-terzi.github.io/react/tree/main/hw2.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -12,6 +13,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "sass": "^1.66.1"
   }
 }
