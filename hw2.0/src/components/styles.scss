@@ -1,0 +1,16 @@
+table {
+  font-weight: 600;
+  border-collapse: collapse;
+  margin: 10px;
+  border: 0 solid rgb(220, 20, 163);
+}
+
+.item-active {
+  color: green;
+  font-weight: bold;
+}
+
+td {
+  padding: 7px;
+  border: 1px solid black;
+}
