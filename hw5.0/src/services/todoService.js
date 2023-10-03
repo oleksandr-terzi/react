@@ -27,5 +27,13 @@ const addTodoItem = (item) =>
       },
     })
     .then(({ data }) => data);
+const editTodoItem = (id, item) =>
+  axios
+    .put(API + `/${id}`, item, {
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+    .then(({ data }) => data);
 
-export { getTodo, changeTodoItem, deleteTodoItem, addTodoItem };
+export { getTodo, changeTodoItem, deleteTodoItem, addTodoItem, editTodoItem };

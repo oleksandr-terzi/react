@@ -6,6 +6,7 @@ import {
   getTodo,
   changeTodoItem,
   deleteTodoItem,
+  editTodoItem,
 } from "../../../services/todoService";
 
 import TodoListItem from "../../../components/TodoListItem/TodoListItem";
@@ -67,6 +68,30 @@ export default function TodoList({ newTodo, filter, color, liftingList }) {
     })();
   };
 
+  const handleItemEdit = (item) => {
+    (async () => {
+      try {
+        // Ваша логика для редактирования элемента, например, с использованием prompt
+        let textItem = prompt("Редактировать заметку:", item.title);
+
+        if (textItem !== null) {
+          let changedItem = await editTodoItem(item.id, {
+            title: textItem,
+          });
+
+          setList((prevState) =>
+            prevState.map((element) => {
+              if (element.id === item.id) element = changedItem;
+              return element;
+            })
+          );
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  };
+
   const handleItemDelete = (e, id) => {
     e.stopPropagation();
 
@@ -87,6 +112,7 @@ export default function TodoList({ newTodo, filter, color, liftingList }) {
           key={index}
           item={item}
           handleItemCompleted={handleItemCompleted}
+          handleItemEdit={handleItemEdit}
           handleItemDelete={handleItemDelete}
         />
       ))}

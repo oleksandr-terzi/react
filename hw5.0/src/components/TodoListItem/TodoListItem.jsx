@@ -3,6 +3,7 @@ import React from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { Grid } from "@mui/material";
 import "./style.sass";
 
@@ -12,6 +13,7 @@ export default function TodoListItem({
   item,
   handleItemCompleted,
   handleItemDelete,
+  handleItemEdit,
 }) {
   const itemClass = (item) => {
     const classes = [`list__item`];
@@ -37,13 +39,22 @@ export default function TodoListItem({
         <div>
           <strong>{item.rating}</strong> <span>{item.title}</span>
         </div>
-        <IconButton
-          edge="end"
-          aria-label="delete"
-          onClick={(e) => handleItemDelete(e, item.id)}
-        >
-          <DeleteIcon />
-        </IconButton>
+        <div style={{ display: "flex" }}>
+          <IconButton
+            edge="start"
+            aria-label="edit"
+            onClick={(e) => handleItemEdit(e, item.id)}
+          >
+            <EditIcon />
+          </IconButton>
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={(e) => handleItemDelete(e, item.id)}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </div>
       </Grid>
     </ListItemButton>
   );
